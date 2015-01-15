@@ -28,10 +28,18 @@ var Canvasprint = (function(Canvasprint) {
     getPrint: function() {
       var canv = document.createElement('canvas');
       var context = canv.getContext('2d');
+
+      var grad = context.createLinearGradient(0,0,70,70);
+      grad.addColorStop(0, "#dddedf");
+      grad.addColorStop(1, "#606264");
+      context.fillStyle = grad;
+      context.fillRect(0, 0, 60, 60);
+
       var txt = 'canvasprint.js';
       var han = ' 칸支 ';
       var rtl = 'زما';
-      txt = txt + han + rtl;
+      var other = '🂡'
+      txt = txt + han + rtl + other;
 
       context.fillStyle = "#fab";
       context.fillRect(0,0,8,60);
