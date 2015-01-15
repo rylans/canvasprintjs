@@ -2,11 +2,9 @@
  * canvasprint.js
  */
 
-(function() {
+var Canvasprint = (function(Canvasprint) {
   'use strict';
-
-  var Canvasprint = function(){
-  };
+  Canvasprint = function (){};
 
   Canvasprint.prototype = {
     get: function (){
@@ -18,17 +16,15 @@
 
     getPrint: function() {
       var canv = document.createElement('canvas');
-      var context = canvas.getContext('2d');
+      var context = canv.getContext('2d');
       var txt = 'canvasprint.js 칸#';
-      context.textBaseLine = "top";
       context.font = "14px 'Arial'";
       context.textBaseLine = "hanging";
       context.fillStyle = "#fab";
-      context.fillRect(40,1,20,30);
-      context.fillText(txt,4,4)
+      context.fillRect(40,13,20,30);
+      context.fillText(txt,11,11);
       return canv.toDataURL();
     }
   };
-
   return Canvasprint;
-})();
+})({});
