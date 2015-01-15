@@ -28,16 +28,32 @@ var Canvasprint = (function(Canvasprint) {
     getPrint: function() {
       var canv = document.createElement('canvas');
       var context = canv.getContext('2d');
-      var txt = 'canvasprint.js 칸#';
-      context.font = "14px 'Arial'";
-      context.textBaseLine = "hanging";
+      var txt = 'canvasprint.js';
+      var han = ' 칸支 ';
+      var rtl = 'زما';
+      txt = txt + han + rtl;
+
       context.fillStyle = "#fab";
-      context.fillRect(40,13,20,30);
-      context.fillText(txt,11,11);
-      context.fillStyle = "rgba(101,202, 12, 0.66)";
-      context.fillText(txt,22,22);
+      context.fillRect(0,0,8,60);
+
+      context.textBaseLine = "hanging";
+
+      context.font = "14px serif";
+      context.fillStyle = "rgba(12, 202, 101, 0.65)";
+      context.fillText(txt,0,10);
+
+      context.font = "14px sans-serif";
+      context.fillStyle = "rgba(101,202, 12, 0.64)";
+      context.fillText(txt,0,20);
+
       context.font = "14px 'no-such-font-'";
-      context.fillText(txt,33,33);
+      context.fillStyle = "rgba(202,101, 12, 0.63)";
+      context.fillText(txt,0,30);
+
+      context.font = "14px monospace";
+      context.fillStyle = "rgba(12, 101, 202, 0.63)";
+      context.fillText(txt,0,40);
+
       return canv.toDataURL().replace("data:image/png;base64,","");
     }
   };
