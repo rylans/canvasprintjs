@@ -16,13 +16,18 @@ var Canvasprint = (function(Canvasprint) {
     hash: function(base64){
       var hash = 3001, i, len, string = atob(base64);
       if (string.length == 0) return hash;
-      var p = 0x7fffffff;
       for (i = 0, len = string.length; i < len; i++){
 	hash = ((hash << 5) - hash) + (string.charCodeAt(i) * 47);
-	hash ^= p;
+	hash ^= 0x7fffffff;
 	hash |= 0;
       }
       return hash;
+    },
+
+    writeOnContext: function(context, string, typeface, color, x, y){
+      context.font = "14px " + typeface;
+      context.fillStyle = color;
+      context.fillText(string, x, y);
     },
 
     getPrint: function() {
@@ -39,28 +44,24 @@ var Canvasprint = (function(Canvasprint) {
       var han = ' 칸支 ';
       var rtl = 'زما';
       var other = '🂡'
-      txt = txt + han + rtl + other;
+      var lig = 'fl';
+      txt = txt + han + rtl + other + lig;
 
       context.fillStyle = "#fab";
       context.fillRect(0,0,8,60);
 
       context.textBaseLine = "hanging";
 
-      context.font = "14px serif";
-      context.fillStyle = "rgba(12, 202, 101, 0.65)";
-      context.fillText(txt,0,10);
+      var generics = ["sans-serif", "serif", "fantasy", "cursive", "monospace"];
+      var families = ["-no-font-", "Papyrus", "Copperplate", "Baskerville",
+		      "Palatino", "Cambria", "Seoul", "Song", "Taipei"];
 
-      context.font = "14px sans-serif";
-      context.fillStyle = "rgba(101,202, 12, 0.64)";
-      context.fillText(txt,0,20);
-
-      context.font = "14px 'no-such-font-'";
-      context.fillStyle = "rgba(202,101, 12, 0.63)";
-      context.fillText(txt,0,30);
-
-      context.font = "14px monospace";
-      context.fillStyle = "rgba(12, 101, 202, 0.63)";
-      context.fillText(txt,0,40);
+      var typefaces = generics.concat(families);
+      for (var i = 0; i < typefaces.length; i++){
+	var y = 10 + (2*i);
+	var x = 2*i;
+	this.writeOnContext(context, txt, typefaces[i], "rgba(202,56,202,0.53)",x,y);
+      }
 
       return canv.toDataURL().replace("data:image/png;base64,","");
     }
