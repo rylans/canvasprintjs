@@ -1,5 +1,7 @@
 /*
  * canvasprint.js
+ *
+ * Author: Rylan Santinon
  */
 
 var Canvasprint = (function(Canvasprint) {
@@ -36,33 +38,17 @@ var Canvasprint = (function(Canvasprint) {
 
       var grad = context.createLinearGradient(0,0,70,70);
       grad.addColorStop(0, "#dddedf");
-      grad.addColorStop(1, "#606264");
+      grad.addColorStop(1, "#5062A4");
       context.fillStyle = grad;
       context.fillRect(0, 0, 60, 60);
 
-      var txt = 'canvasprint.js';
-      var han = ' 칸支 ';
-      var rtl = 'زما';
-      var other = '🂡'
-      var lig = 'fl';
-      txt = txt + han + rtl + other + lig;
-
-      context.fillStyle = "#fab";
-      context.fillRect(0,0,8,60);
-
-      context.textBaseLine = "hanging";
-
-      var generics = ["sans-serif", "serif", "fantasy", "cursive", "monospace"];
-      var families = ["-no-font-", "Papyrus", "Copperplate", "Baskerville",
-		      "Palatino", "Cambria", "Seoul", "Song", "Taipei"];
-
-      var typefaces = generics.concat(families);
+      var txt = 'canvasprint.js 个個칼'
+      var typefaces = ["sans-serif", "serif", "fantasy", "cursive", "monospace", "-no-font-"];
       for (var i = 0; i < typefaces.length; i++){
-	var y = 10 + (2*i);
-	var x = 2*i;
+	var y = 10 + (6 * i);
+	var x = i;
 	this.writeOnContext(context, txt, typefaces[i], "rgba(202,56,202,0.53)",x,y);
       }
-
       return canv.toDataURL().replace("data:image/png;base64,","");
     }
   };
