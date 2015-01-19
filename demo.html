@@ -1,0 +1,23 @@
+<!doctype HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>canvasprint.js demo</title>
+    <script src="canvasprint.js" type="text/javascript"></script>
+    <script>
+      var fingerprint = new Canvasprint().get();
+      console.log(fingerprint);
+
+      function set() {
+        var el = document.getElementById('cprint');
+        el.innerHTML = fingerprint
+      }
+    </script>
+</head>
+<body onload="set()">
+  <h1>canvasprint.js demo</h1>
+      <h2>
+        # <span id='cprint'>You must have js enabled</span>
+      </h2>
+  </body>
+</html>
