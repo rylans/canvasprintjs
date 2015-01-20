@@ -1,5 +1,6 @@
 /*
  * canvasprint.js
+ * version 0.1
  *
  * Author: Rylan Santinon
  */
