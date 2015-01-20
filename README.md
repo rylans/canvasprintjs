@@ -14,3 +14,5 @@ Javascript fingerprinting library that only uses the HTML5 canvas element
 | Debian 6.0 | Firefox 17.0 | 2120053259 |
 | Debian 6.0 | Epiphany 3.6.1 | 2122682749 |
 | Ubuntu 9.10 | Chrome 27.0 | 2066229526 |
+| Windows 8.1 | IE 11 | 565408074 |
+| Windows XP | Firefox 3.6 | -1422834556 |
