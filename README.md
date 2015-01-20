@@ -1,6 +1,12 @@
 # canvasprintjs
 Javascript fingerprinting library that only uses the HTML5 canvas element
 
+## Usage
+
+```javascript
+var fingerprint = new Canvasprint().get();
+```
+
 ### Version 0.1 (6f94370)
 
 | System | Browser | Fingerprint |
